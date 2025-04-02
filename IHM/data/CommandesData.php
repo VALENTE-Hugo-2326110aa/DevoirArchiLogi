@@ -5,7 +5,7 @@ namespace data;
 class CommandesData
 {
 
-    private $URL = 'http://localhost:8164/ApiCommandes-1.0-SNAPSHOT/api/commandes/';
+    private $URL = 'http://localhost:8163/ApiCommandes-1.0-SNAPSHOT/api/commandes/';
 
     public function getCommandesByClient($clientId)
     {

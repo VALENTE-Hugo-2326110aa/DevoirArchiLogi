@@ -3,7 +3,7 @@
 class PaniersData
 {
 
-    private $URL = "http://localhost:8161/ApiPaniers-1.0-SNAPSHOT/api/paniers/";
+    private $URL = "http://localhost:8080/ApiPaniers-1.0-SNAPSHOT/api/paniers/";
 
     /**
      * Récupère tous les paniers
@@ -61,7 +61,43 @@ class PaniersData
      * @return bool
      */
     public function commanderPanier($nomPanier) {
-        $url = $this->URL . $nomPanier; // Ajouter le nom du panier à l'URL
+        $url = $this->URL . 'commanderPanier/' . $nomPanier; // Ajouter le nom du panier à l'URL
+
+        // Créer le corps de la requête en JSON
+        $requestData = json_encode([
+            'quantite' => 1, // Quantité par défaut
+        ]);
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $requestData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json'
+        ]);
+
+        // Exécuter la requête cURL
+        $response = curl_exec($ch);
+
+        // Vérifier le code de statut HTTP
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close($ch);
+
+        // Retourner vrai si la requête a réussi, sinon faux
+        if ($httpCode == 200) {
+            return true;
+        } else {
+            // Afficher l'erreur si la commande échoue
+            echo "Erreur : " . $response;
+            return false;
+        }
+    }
+
+    public function rechargerPanier($nomPanier) {
+        $url = $this->URL . 'rechargerPanier/' . $nomPanier; // Ajouter le nom du panier à l'URL
 
         // Créer le corps de la requête en JSON
         $requestData = json_encode([

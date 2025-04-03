@@ -9,11 +9,21 @@ class CommandeChecking
 
     private $commandesTxt;
 
+    /**
+     * Retourne les commandes d'un client
+     * @return array|null
+     */
     public function getCommandesTxt()
     {
         return $this->commandesTxt;
     }
 
+    /**
+     * Donne les commandes d'un client
+     * @param CommandesData $data
+     * @param $clientId
+     * @return array|null
+     */
     public function getCommandesByClient(CommandesData $data, $clientId)
     {
         $commandes = $data->getCommandesByClient($clientId);

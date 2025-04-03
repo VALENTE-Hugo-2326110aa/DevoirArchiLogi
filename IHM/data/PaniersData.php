@@ -5,6 +5,10 @@ class PaniersData
 
     private $URL = "http://localhost:8161/ApiPaniers-1.0-SNAPSHOT/api/paniers/";
 
+    /**
+     * Récupère tous les paniers
+     * @return array|null
+     */
     public function getAllPaniers() {
 
         $ch = curl_init();
@@ -24,6 +28,11 @@ class PaniersData
         return $paniers;
     }
 
+    /**
+     * Récupère un panier par son ID
+     * @param $id
+     * @return array|null
+     */
     public function getPanier($id)
     {
         $url = $this->URL . urldecode($id);
@@ -45,6 +54,12 @@ class PaniersData
         return $panier;
     }
 
+    /**
+     * Enregistre une commande
+     * @param $clientId
+     * @param $nomPanier
+     * @return bool
+     */
     public function commanderPanier($nomPanier) {
         $url = $this->URL . $nomPanier; // Ajouter le nom du panier à l'URL
 

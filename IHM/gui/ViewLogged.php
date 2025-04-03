@@ -22,6 +22,10 @@ abstract class ViewLogged extends View
             </header>';
     }
 
+    /**
+     * Affiche la page
+     * @return void
+     */
     public function display()
     {
         $this->layout->display( $this->title, $this->connexion, $this->content );

@@ -9,6 +9,12 @@ class Layout
         $this->templateFile = $templateFile;
     }
 
+    /**
+     * Affiche la page
+     * @param $title
+     * @param $connexion
+     * @param $content
+     */
     public function display( $title, $connexion, $content )
     {
         $style = '<link rel="stylesheet" href="/css/style.css">';

@@ -18,6 +18,9 @@ class User
         $this->password = $password;
     }
 
+    /**
+     * Getters de l'attribut login
+     */
     public function getLogin()
     {
         return $this->login;

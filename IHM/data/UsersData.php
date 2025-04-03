@@ -11,6 +11,12 @@ class UsersData
 
     private $URL = "http://localhost:8080/user_product-1.0-SNAPSHOT/api/users/";
 
+    /**
+     * Récupère un utilisateur par son login
+     * @param $login
+     * @param $password
+     * @return User|null
+     */
     public function getUser($login, $password)
     {
 

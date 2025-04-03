@@ -19,6 +19,11 @@ class Panier
         $this->quantite = $quantite;
     }
 
+    /**
+     * Ajoute un produit au panier
+     * @param $produit
+     * @param $quantity
+     */
     public function addProduit($produit, $quantity)
     {
         if (array_key_exists($produit, $this->produits)) {
@@ -29,6 +34,11 @@ class Panier
         }
     }
 
+    /**
+     * Supprime un produit du panier
+     * @param $produit
+     * @return void
+     */
     public function removeProduit($produit)
     {
         if (array_key_exists($produit, $this->produits)) {
@@ -37,16 +47,27 @@ class Panier
         }
     }
 
-    // Setters
+    /**
+     * Modifie la quantité de panier disponible
+     * @param $produit
+     * @param $quantity
+     */
     public function setQuantite($quandtite) {
         $this->quantite = $quandtite;
     }
 
+    /**
+     * Retourne la quantité de panier disponible
+     * @return int
+     */
     public function getQuantite() {
         return $this->quantite;
     }
 
-    // Decrement la quantité d'un produit
+    /**
+     * Incrémente la quantité de produit dans le panier
+     * @return void
+     */
     public function decrementQuantite()
     {
         if ($this->quantite > 0) {
@@ -54,26 +75,46 @@ class Panier
         }
     }
 
+    /**
+     * Retourne la date de mise à jour du panier
+     * @return string
+     */
     public function getMaj()
     {
         return $this->maj;
     }
 
+    /**
+     * Retourne le nom du panier
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Retourne le prix du panier
+     * @return float
+     */
     public function getPrix()
     {
         return $this->prix;
     }
 
+    /**
+     * Retourne les produits du panier
+     * @return array
+     */
     public function getProduits()
     {
         return $this->produits;
     }
 
+    /**
+     * Retourne les quantités de produits dans le panier
+     * @return array
+     */
     public function getQuantities()
     {
         return $this->quantities;

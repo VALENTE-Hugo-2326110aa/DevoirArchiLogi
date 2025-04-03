@@ -7,6 +7,11 @@ class CommandesData
 
     private $URL = 'http://localhost:8163/ApiCommandes-1.0-SNAPSHOT/api/commandes/';
 
+    /**
+     * Récupère les commandes d'un client
+     * @param $clientId
+     * @return mixed|null
+     */
     public function getCommandesByClient($clientId)
     {
         $url = $this->URL . urlencode($clientId);
@@ -28,6 +33,12 @@ class CommandesData
         return $commandes;
     }
 
+    /**
+     * Enregistre une commande
+     * @param $clientId
+     * @param $nomPanier
+     * @return bool
+     */
     public function registerCommand($clientId, $nomPanier) {
 
         $postData = http_build_query([
@@ -58,6 +69,12 @@ class CommandesData
 
     }
 
+    /**
+     * Supprime une commande
+     * @param $clientId
+     * @param $nomPanier
+     * @return bool
+     */
     public function removeCommand($clientId, $nomPanier)
     {
         $url = $this->URL . urlencode($clientId) . '/' . urlencode($nomPanier);

@@ -12,6 +12,10 @@ abstract class View
         $this->layout = $layout;
     }
 
+    /**
+     * Affiche la page
+     * @return void
+     */
     public function display()
     {
         $this->layout->display( $this->title, "", $this->content );

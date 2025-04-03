@@ -7,11 +7,19 @@ class Presenter
 
     private $checking;
 
+    /**
+     * Presenter constructor.
+     * @param $checking
+     */
     public function __construct($checking)
     {
         $this->checking = $checking;
     }
 
+    /**
+     * Retourne les paniers disponibles sous forme de HTML
+     * @return string|null
+     */
     public function getAllPaniersHTML()
     {
         $content = null;
@@ -27,6 +35,10 @@ class Presenter
         return $content;
     }
 
+    /**
+     * Retourne le panier actuel sous forme de HTML
+     * @return string|null
+     */
     public function getCurrentPanierHTML()
     {
         $content = null;
@@ -62,6 +74,10 @@ class Presenter
         return $content;
     }
 
+    /**
+     * Retourne les commandes d'un client sous forme de HTML
+     * @return string|null
+     */
     public function getCommandesHTML()
     {
         $commandes = $this->checking->getCommandesTxt();

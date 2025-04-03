@@ -68,7 +68,11 @@ class Presenter
             $content .= '<form method="post" action="/index.php/panier?id=' . $panier['title'] . '">';
             $content .= '<input type="hidden" value="' . $_SESSION['login'] . '" name="clientId">';
             $content .= '<input type="hidden" name="nomPanier" value="' . $panier['title'] . '">';
-            $content .= '<input type="submit" value="Commander">';
+            if ($panier['quantite'] == 0) {
+                $content .= '<input type="submit" value="Indisponible" disabled>';
+            } else {
+                $content .= '<input type="submit" value="Commander">';
+            }
             $content .= '</form>';
         }
         return $content;

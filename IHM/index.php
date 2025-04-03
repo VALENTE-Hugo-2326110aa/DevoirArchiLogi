@@ -91,6 +91,7 @@ elseif ('/index.php/panier' == $uri && isset($_GET['id'])) {
         $nomPanier = $_POST['nomPanier'];
 
         if ($dataCommandes->registerCommand($clientId, $nomPanier)) {
+            $dataPaniers->commanderPanier($nomPanier);
             // Commande enregistrée avec succès
             header("Location: /index.php/commandes");
             exit();
@@ -117,6 +118,7 @@ elseif ('/index.php/commandes' == $uri) {
         $nomPanier = $_POST['nomPanier'];
 
         if ($dataCommandes->removeCommand($clientId, $nomPanier)) {
+            $dataPaniers->rechargerPanier($nomPanier);
             // Commande supprimé avec succès
             header("Location: /index.php/commandes");
             exit();
